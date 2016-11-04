@@ -12,7 +12,11 @@
       <dd><img src="<%= @photo.image %>" class="img-responsive"></dd>
 
       <dt>Owner</dt>
-      <dd><%= @photo.owner_id %></dd>
+      <dd>
+        <a href="/users/<%= @photo.owner.id %>">
+          <%= @photo.owner.username %>
+        </a>
+      </dd>
 
     </dl>
 
