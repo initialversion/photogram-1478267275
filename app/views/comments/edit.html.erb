@@ -18,14 +18,8 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for commenter_id -->
-      <div class="form-group">
-        <label for="commenter_id" class="control-label">
-          Commenter
-        </label>
-
-        <%= select_tag(:commenter_id, options_from_collection_for_select(User.all, :id, :username, @comment.commenter_id), :class => "form-control") %>
-      </div>
+      
+      
 
       <!-- Label and input for photo_id -->
       <div class="form-group">

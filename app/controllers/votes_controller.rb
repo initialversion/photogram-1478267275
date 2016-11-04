@@ -1,6 +1,16 @@
 class VotesController < ApplicationController
+  before_action :current_user_must_be_vote_user, :only => [:show, :edit, :update, :destroy]
+
+  def current_user_must_be_vote_user
+    vote = Vote.find(params[:id])
+
+    unless current_user == vote.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
-    @votes = Vote.page(params[:page])
+    @votes = current_user.likes.page(params[:page])
   end
 
   def show
