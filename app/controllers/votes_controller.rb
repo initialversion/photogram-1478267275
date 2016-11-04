@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   def index
-    @votes = Vote.all
+    @votes = Vote.page(params[:page])
   end
 
   def show

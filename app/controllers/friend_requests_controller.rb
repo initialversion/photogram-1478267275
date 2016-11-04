@@ -1,6 +1,6 @@
 class FriendRequestsController < ApplicationController
   def index
-    @friend_requests = FriendRequest.all
+    @friend_requests = FriendRequest.page(params[:page])
   end
 
   def show
