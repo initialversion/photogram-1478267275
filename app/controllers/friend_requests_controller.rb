@@ -1,6 +1,16 @@
 class FriendRequestsController < ApplicationController
+  before_action :current_user_must_be_friend_request_user, :only => [:show, :edit, :update, :destroy]
+
+  def current_user_must_be_friend_request_user
+    friend_request = FriendRequest.find(params[:id])
+
+    unless current_user == friend_request.sender
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
-    @friend_requests = FriendRequest.page(params[:page])
+    @friend_requests = current_user.sent_friend_requests.page(params[:page])
   end
 
   def show
