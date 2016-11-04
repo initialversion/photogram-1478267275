@@ -19,10 +19,14 @@
       <tr>
         <td><%= photo.caption %></td>
         <td><img src='<%= photo.image %>' class='img-responsive'></td>
-        <td><%= photo.owner.username %></td>
+        <td>
+          <a href="/users/<%= photo.owner.id %>">
+            <%= photo.owner.username %>
+          </a>
+        </td>
         <td>
           <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
-          
+
           <% if current_user == photo.owner %>
             <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
